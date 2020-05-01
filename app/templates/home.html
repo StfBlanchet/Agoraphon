@@ -1,0 +1,78 @@
+<!-- Agor@phon home.html -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+
+ <!-- Content Wrapper -->
+    <div id="home-content-wrapper">
+
+      <!-- Main Content -->
+      <div id="home-content">
+
+          <div class="content mb-4">
+          <h1 class="highlights-big text-center">agor@phon</h1>
+              <p>[  La voix des forums  ]</p>
+          </div>
+
+        <form method="get" action="/topics" class="search_process d-sm-inline-block form-inline mx-auto my-5" accept-charset="utf-8">
+              <div class="input-group">
+            <input name="q" type="text" placeholder="Chercher..." class="form-control bg-light border-0 small">
+                  <div class="input-group-append">
+              <button class="btn btn-primary" type="submit"><i class="fas fa-search fa-lg"></i></button>
+                  </div>
+            </div>
+        </form>
+
+        <form method="get" action="/topics" class="search_process my-5" accept-charset="utf-8">
+          <div class="row mt-5">
+
+            <div class="col-sm-4 mb-5">
+                <img class="text-center mb-3" src="{{ url_for('static', filename='img/recent_.png') }}">
+                <p class="text-m text-b">Récent</p>
+                <button name="q" value="récent" class="btn btn-secondary text-uppercase text-sm mb-3">Explorer</button>
+            </div>
+
+             <div class="col-sm-4 mb-5">
+                 <img class="text-center mb-3" src="{{ url_for('static', filename='img/politics.png') }}">
+                    <p class="text-m text-b">Politique</p>
+                <button name="q" value="politique" class="btn btn-secondary text-uppercase text-sm mb-3">Explorer</button>
+            </div>
+
+            <div class="col-sm-4 mb-5">
+                <img class="text-center mb-3" src="{{ url_for('static', filename='img/religions.png') }}">
+                    <p class="text-m text-b">Religion</p>
+                <button name="q" value="religion" class="btn btn-secondary text-uppercase text-sm mb-3">Explorer</button>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-4 mb-5">
+                <img class="text-center mb-3" src="{{ url_for('static', filename='img/sciences.png') }}">
+                    <p class="text-m text-b">Science & Techno</p>
+                <button name="q" value="science" class="btn btn-secondary text-uppercase text-sm">Explorer</button>
+            </div>
+
+             <div class="col-sm-4 mb-5">
+                 <img class="text-center mb-3" src="{{ url_for('static', filename='img/environment.png') }}">
+                    <p class="text-m text-b">Environnement</p>
+                <button name="q" value="environnement" class="btn btn-secondary text-uppercase text-sm">Explorer</button>
+            </div>
+
+            <div class="col-sm-4 mb-5">
+                <img class="text-center mb-3" src="{{ url_for('static', filename='img/health.png') }}">
+                    <p class="text-m text-b">Santé</p>
+                <button name="q" value="santé" class="btn btn-secondary text-uppercase text-sm">Explorer</button>
+            </div>
+
+          </div>
+
+          </form>
+
+      </div>
+
+    </div>
+
+{% endblock %}

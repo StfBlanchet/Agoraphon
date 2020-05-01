@@ -1,0 +1,371 @@
+<!-- Agor@phon dashboard.html -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    {{ js_resources|indent(4)|safe }}
+    {{ css_resources|indent(4)|safe }}
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    {% include 'sidebar.html' %}
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        {% include 'topbar.html' %}
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Topic Title -->
+          <div class="highlights-md mb-0 mt-3">Topic</div>
+          <h1 class="h4 mb-5">{{ topic }}</h1>
+
+          <!-- Content Row 1 -->
+          <div class="row mt-3">
+
+           <!-- Dates -->
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 py-1">
+                <div class="card-body">
+                      <div class="text-md text-primary text-uppercase mb-3">Création</div>
+                      <div class="h5 mb-0 mr-3 text-gray-800">{{ stat.creation.replace('T', ' à ') }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 py-1">
+                <div class="card-body">
+                      <div class="text-md text-primary text-uppercase mb-3">Dernier post</div>
+                      <div class="h5 mb-0 mr-3 text-gray-800">{{ stat.last_post.replace('T', ' à ') }}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Persistence -->
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 py-1 bg-highlight-b">
+                <div class="card-body">
+                      <div class="text-md text-uppercase mb-3">Persistance</div>
+                      <div class="h5 mb-1 mr-3">{{ stat.hours }} heure(s)</div>
+                      <div>soit</div>
+                    <div class="h5 mb-1 mr-3">{{ stat.persistence }} jour(s)</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Content Row 2 -->
+          <div class="row mt-3">
+
+            <!-- Posts -->
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 py-1">
+                <div class="card-body">
+                      <div class="text-md text-primary text-uppercase mb-3">Posts</div>
+                      <div class="h5 mb-0 mr-3 text-gray-800">{{ stat.posts }}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Users -->
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 py-1">
+                <div class="card-body">
+                      <div class="text-md text-primary text-uppercase mb-3">Utilisateurs</div>
+                      <div class="h5 mb-0 mr-3 text-gray-800">{{ stat.users }}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Avg activity -->
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 py-1 bg-highlight-b">
+                <div class="card-body">
+                      <div class="text-md text-uppercase mb-3">Activité moyenne</div>
+                      <div class="h5 mb-0 mr-3">{{ stat.avg_posting_per_hour }}</div>
+                        <div>post(s) / heure</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- End of Content Row 2 -->
+
+          <!-- Content Row 3 -->
+          <div class="row mt-3">
+
+           <!-- Medias -->
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 py-1">
+                <div class="card-body">
+                      <div class="text-md text-primary text-uppercase mb-3">Partages</div>
+                      <div class="h5 mb-0 mr-3 text-gray-800">{{ stat.medias_rate }} %</div>
+                    <p>des posts partagent un média (article, image, vidéo).</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quotes -->
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 py-1">
+                <div class="card-body">
+                      <div class="text-md text-primary text-uppercase mb-3">Citations</div>
+                      <div class="h5 mb-0 mr-3 text-gray-800">{{ stat.quote_rate }} %</div>
+                    <p>des posts réagissent à d'autres posts.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Participation -->
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 py-1 bg-highlight-b">
+                <div class="card-body">
+                      <div class="text-md text-uppercase mb-0">Participation</div>
+                    <p class="mt-0 pt-0 text-sm">(médiane)</p>
+                    <div>50% des utilisateurs ont publié au moins</div>
+                    <div class="h5">{{ stat.median_participation }} post(s).</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- End of Content Row 3 -->
+
+          {% if stat.medias_rate|int() > 0 %}
+          <div class="row mt-3">
+
+            <!-- Media list -->
+            <div class="col-md-12 mb-4">
+              <div class="card h-100 py-2">
+                <div class="card-body">
+
+                    <div class="text-md text-primary text-uppercase mb-3">Médias</div>
+                    <div class="mb-1 mr-3 text-gray-800">{{ stat.sources.share }} %<span class="float-right">articles</span></div>
+                      <div class="mb-2 progress">
+                        <div class="progress-bar" role="progressbar" style="background: #5b2c6f; width: {{ stat.sources.share }}%" aria-valuenow="{{ stat.sources.share }}" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    <div class="mb-1 mr-3 text-gray-800">{{ stat.imgs.share }} %<span class="float-right">images</span></div>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="background: #2980b9; width: {{ stat.imgs.share }}%" aria-valuenow="{{ stat.imgs.share }}" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    <div class="mb-1 mr-3 text-gray-800">{{ stat.vids.share }} %<span class="float-right">vidéos</span></div>
+                      <div class="mb-2 progress">
+                        <div class="progress-bar" role="progressbar" style="background: #17202a; width: {{ stat.vids.share }}%" aria-valuenow="{{ stat.vids.share }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+
+                  <p class="mt-5">
+                  <button class="btn btn-sm btn-primary text-uppercase" type="button" data-toggle="collapse" data-target="#sources" aria-expanded="false" aria-controls="collapseExample">
+                    Articles
+                  </button>
+                  <button class="btn btn-sm btn-primary text-uppercase" type="button" data-toggle="collapse" data-target="#images" aria-expanded="false" aria-controls="collapseExample">
+                    Images
+                  </button>
+                  <button class="btn btn-sm btn-primary text-uppercase" type="button" data-toggle="collapse" data-target="#videos" aria-expanded="false" aria-controls="collapseExample">
+                    Vidéos
+                  </button>
+                </p>
+
+                <div class="collapse" id="sources">
+                  <div class="card card-body pb-1">
+                   {% if stat.sources.list %}
+                  <ul class="list-unstyled">
+                    {% for source in stat.sources.list %}
+                    <li class="pb-2"><a class="bl" href="{{ source }}" target="_blank">{{ source }}</a></li>
+                  {% endfor %}
+                  </ul>
+                  {% endif %}
+                  </div>
+                </div>
+
+                <div class="collapse" id="images">
+                  <div class="card card-body pb-1">
+                    {% if stat.imgs.list %}
+                  <ul class="list-unstyled list-inline">
+                    {% for img in stat.imgs.list %}
+                    <li class="list-inline-item p-1"><img class="img-fluid" src="{{ img }}"></li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                  </div>
+                </div>
+
+                <div class="collapse" id="videos">
+                  <div class="card card-body pb-1">
+                   {% if stat.vids.list %}
+                  <ul class="list-unstyled">
+                    {% for video in stat.vids.list %}
+                    <li class="pb-2"><a class="bl" href="{{ video }}" target="_blank">{{ video }}</a></li>
+                  {% endfor %}
+                  </ul>
+                  {% endif %}
+                  </div>
+                </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- End of Media list -->
+
+          {% if dom|length > 0 %}
+          <div class="row mt-3">
+          <!-- Domain list -->
+
+          {% if dom|length >= 5 %}
+           <div class="col-md-6 mb-3">
+             <div class="card h-100 py-2">
+               <div class="card-body">
+                <div class="text-md text-primary text-uppercase mb-3">Domaines source (articles)</div>
+                   <p>{{ dom|length }} domaines différents diffusés dans ce topic.</p>
+                    {{ plot_script2|indent(4)|safe }}
+                    {{ plot_div2|indent(4)|safe }}
+               </div>
+             </div>
+           </div>
+
+            <div class="col-md-6 mb-3">
+             <div class="card h-100 py-2">
+               <div class="card-body">
+                   {% for key, var in dom[:5].iterrows() %}
+                    {% include 'progress_bar.html' %}
+                   {% endfor %}
+                    <p class="text-center mt-5">
+                  <button class="btn btn-sm btn-primary text-uppercase" type="button" data-toggle="collapse" data-target="#domains" aria-expanded="false" aria-controls="collapseExample">
+                    Domaines (suite)
+                  </button>
+                    </p>
+                  <div class="collapse" id="domains">
+                  <div class="card card-body pb-1">
+                   {% for key, var in dom[6:].iterrows() %}
+                    {% include 'progress_bar.html' %}
+                   {% endfor %}
+                  </div>
+                </div>
+
+                </div>
+              </div>
+            </div>
+
+           {% else %}
+           <div class="col-md-12 mb-3">
+              <div class="card h-100 py-1">
+                <div class="card-body">
+                    <div class="text-md text-primary text-uppercase mb-3">Domaine(s) source (article.s)</div>
+                   {% for key, var in dom.iterrows() %}
+                    {% include 'progress_bar.html' %}
+                   {% endfor %}
+                </div>
+             </div>
+           </div>
+           {% endif %}
+
+            </div>
+           {% endif %}
+           <!-- End of Domain list -->
+
+          <!-- End of Media condition -->
+        {% endif %}
+
+          <!-- Tones -->
+          {% if tone|length > 0 %}
+          <div class="row mt-3">
+
+          {% if tone|length >= 4 %}
+           <div class="col-md-6 mb-3">
+             <div class="card h-100 py-2">
+               <div class="card-body">
+                <div class="text-md text-primary text-uppercase mb-3">Tonalité exprimée</div>
+                   <p>sur les {{ stat.emoticons }} posts contenant des émoticônes.</p>
+                    {{ plot_script1|indent(4)|safe }}
+                    {{ plot_div1|indent(4)|safe }}
+               </div>
+             </div>
+           </div>
+
+            <div class="col-md-6 mb-3">
+             <div class="card h-100 py-2">
+               <div class="card-body">
+                 {% for key, var in tone[:3].iterrows() %}
+                    {% include 'progress_bar.html' %}
+                 {% endfor %}
+                    <p class="text-center mt-5">
+                  <button class="btn btn-sm btn-primary text-uppercase" type="button" data-toggle="collapse" data-target="#tones" aria-expanded="false" aria-controls="collapseExample">
+                    Tonalités (suite)
+                  </button>
+                    </p>
+                  <div class="collapse" id="tones">
+                  <div class="card card-body pb-1">
+                 {% for key, var in tone[3:].iterrows() %}
+                    {% include 'progress_bar.html' %}
+                 {% endfor %}
+                  </div>
+                </div>
+
+                </div>
+              </div>
+            </div>
+
+           {% else %}
+           <div class="col-md-12 mb-3">
+              <div class="card h-100 py-1">
+                <div class="card-body">
+                    <div class="text-md text-primary text-uppercase mb-3">Tonalité exprimée</div>
+                   {% for key, var in tone.iterrows() %}
+                     {% include 'progress_bar.html' %}
+                   {% endfor %}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            </div>
+            {% endif %}
+           <!-- End of Tones -->
+
+          <!-- Post sample 1 -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-3">
+          <h2 class="h4">5 premiers posts</h2>
+          </div>
+
+          {% for post in sample[:5] %}
+
+            {% include 'post_sample.html' %}
+
+          {% endfor %}
+          <!-- End of Post sample part 1 -->
+
+          <!-- Post sample 2 -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-3">
+          <h2 class="h4">5 derniers posts</h2>
+          </div>
+
+          {% for post in sample[-5:] %}
+
+            {% include 'post_sample.html' %}
+
+          {% endfor %}
+          <!-- End of Post sample part 2 -->
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+  <!-- End of Page Wrapper -->
+
+{% endblock %}

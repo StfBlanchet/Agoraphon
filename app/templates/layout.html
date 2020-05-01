@@ -1,0 +1,87 @@
+<!-- Agor@phon layout.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Agoraphon. La voix de forums.">
+  <meta name="author" content="Stéphanie Blanchet">
+
+  <title>{{ title }}</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/agoraphon_b_32_2.png') }}">
+
+  <!-- Custom fonts for this template-->
+  <link href="{{ url_for('static', filename='font/css/all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Cairo:300,300i,400,400i,600,600i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Schoolbell|Walter+Turncoat&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/agoraphon.css') }}" rel="stylesheet">
+
+</head>
+
+{% if message %}
+    <div id="message" class="wait">
+  {% if message.success %}
+          <h1 class="highlights-md text-white text-center mt-5">{{ message.success }}</h1>
+              <br>
+              <button onclick="hideIt()" class="btn btn-secondary text-uppercase text-sm">afficher</button>
+  {% endif %}
+  {% if message.warn %}
+          <h1 class="highlights-md text-white text-center mt-5">{{ message.warn }}</h1>
+              <br>
+              <button onclick="hideIt()" class="btn btn-secondary text-uppercase text-sm">afficher</button>
+  {% endif %}
+  {% if message.fail %}
+          <h1 class="highlights-md text-white text-center mt-5">{{ message.fail }}</h1>
+              <br>
+              <a href="/" class="btn btn-secondary text-uppercase text-sm">retour</a>
+  {% endif %}
+          </div>
+{% endif %}
+
+<body id="page-top">
+
+    <div id="waitZone"></div>
+
+    {% block content %}{% endblock %}
+
+  <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Stéphanie BLANCHET, 2020.</span>
+          </div>
+        </div>
+      </footer>
+  <!-- End of Footer -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{ url_for('static', filename='js/transition.js') }}"></script>
+
+</body>
+
+</html>

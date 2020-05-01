@@ -1,0 +1,21 @@
+<!-- Agor@phon transit.html -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+ <!-- Content Wrapper -->
+    <div id="home-content-wrapper">
+
+      <!-- Main Content -->
+      <div class="wait">
+
+        <h1 class="highlights-big text-white">{{ subtitle }}</h1>
+          <p class="mb-5">{{ message }}</p>
+          <a href="{{ redirect }}" class="btn btn-secondary text-sm mb-3">{{ button }}</a>
+
+      </div>
+
+    </div>
+
+{% endblock %}
