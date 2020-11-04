@@ -1,5 +1,5 @@
 # Agor@phon
-A Flask application to analyze the activity on an online forum, using scraping, indexing, analytics and NLP.
+A Flask application for analyzing activity on an online dicussion forum, using scraping, indexing, analytics, relational graph and NLP.
 
 * [Objectives](#objectives)
 * [How it works](#how-it-works)
