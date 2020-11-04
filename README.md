@@ -3,7 +3,7 @@ A Flask application to analyze the activity on an online forum, using scraping, 
 
 * [Objectives](#objectives)
 * [How it works](#how-it-works)
-* [Technical requirements](#technical-requirements)
+* [Architecture](#architecture)
 * [Status](#status)
 * [Contributing](#contributing)
 * [Authors](#authors)
@@ -34,18 +34,14 @@ A preliminary exploratory study has shown that the forum is a place of convergen
 <img src="agoraphon_functional_view.png">
 
 
-## Technical requirements
+## Architecture
 
 The app is built with Flask framework 1.1 and written in Python 3.8.
 
-One can use the package manager [pip](https://pip.pypa.io/en/stable/) to install the whole required libraries.
-
-```bash
-pip install -r requirements.txt
-```
-
 The whole system is based on a distributed architecture where 3 different servers communicate: the first being in charge of collecting the scraped sources, the second of indexing the parsed content, and the third one hosting the app where analytics and NLP are implemented.
 <img src="agoraphon_architecture.png">
+
+
 ## Status
 
 This project is in progress.
