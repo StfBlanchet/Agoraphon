@@ -56,8 +56,8 @@ Please make sure to update tests as appropriate.
 
 ## Authors
 
-- Initial work: Stephanie BLANCHET, Data and Application Pythonist.
-- Contact: stephanie.blanchet.it@gmail.com
+- Initial work: Stephanie BLANCHET, Pythonist Cognitician.
+- Contact: agoraphon@gmail.com
 
 
 ## License
