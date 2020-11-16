@@ -35,15 +35,16 @@ A preliminary exploratory study has shown that the forum is a place of convergen
 
 ## How it works
 
-<img src="Agoraphon_design/Agoraphon_search.png">
-<img src="Agoraphon_design/Agoraphon_select.png">
-<img src="Agoraphon_design/Agoraphon_analyze_topic.png">
-<img src="Agoraphon_design/Agoraphon_nlp_annotator.png">
-<img src="Agoraphon_design/Agoraphon_extract_ne.png">
-<img src="Agoraphon_design/Agoraphon_source_annotator.png">
-<img src="Agoraphon_design/Agoraphon_select_bulk.png">
-<img src="Agoraphon_design/Agoraphon_analyze_bulk.png">
-<img src="Agoraphon_design/Agoraphon_analyze_user.png">
+![alt text](Agoraphon_design/Agoraphon_search.png "Agoraphon search")
+![alt text](Agoraphon_design/Agoraphon_select.png "Agoraphon select")
+![alt text](Agoraphon_design/Agoraphon_analyze_topic.png "Agoraphon analyze_topic")
+![alt text](Agoraphon_design/Agoraphon_nlp_annotator.png "Agoraphon nlp_annotator")
+![alt text](Agoraphon_design/Agoraphon_extract_ne.png "Agoraphon extract_ne")
+![alt text](Agoraphon_design/Agoraphon_source_annotator.png "Agoraphon source_annotator")
+![alt text](Agoraphon_design/Agoraphon_select_bulk.png "Agoraphon select_bulk")
+![alt text](Agoraphon_design/Agoraphon_analyze_bulk.png "Agoraphon analyze_bulk")
+![alt text](Agoraphon_design/Agoraphon_analyze_user.png "Agoraphon analyze_user")
+
 
 
 ## Stack and Architecture
